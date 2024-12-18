@@ -1,0 +1,33 @@
+export nombre_variable = [texto]
+
+ECHO $PROJECT_iD --> VARIABLE 
+
+CONTENEDOR
+gcloud services enable container.googleapis.com --project $PROJECT_ID
+
+MONITOREO
+gcloud services enable monitoring.googleapis.com --project $PROJECT_ID
+
+TRAZADO
+gcloud services enable cloudtrace.googleapis.com --project $PROJECT_ID
+
+CLOUDPROFILER
+gcloud services enable cloudprofiler.googleapis.com --project $PROJECT_ID
+
+DEBUGGER(DEPRECADO EN ABRIL)
+gcloud services enable clouddebugger.googleapis.com --project $PROJECT_ID
+
+(DESACTIVAR AL FINAL)
+
+mkdir practica_kubernetes
+
+gh repo clone RodrigoGarcia18/microservicios_practica
+
+
+gcloud container clusters create butin-online --zone us-central1-a --machine-type=e2-standard-2 --num-nodes=4 --disk-size 20GB
+
+kubectl apply -f ./release/kubernetes-manifests.yaml
+
+kubectl get pods(ver la ejecución)
+
+GRPC: PERMITE LA COMUNICACIÓN ENTRE SERVICIOS.
